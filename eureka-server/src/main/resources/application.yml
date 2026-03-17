@@ -1,0 +1,22 @@
+
+server:
+  port: ${SERVER_PORT:8761}
+
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  client:
+    #Como eureka es el server, no debe registrarse
+   register-with-eureka: false
+   #Tampoco necesita consultar a eureka
+   fetch-register: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+
+  show-details: always

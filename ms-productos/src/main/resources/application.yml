@@ -1,0 +1,46 @@
+#donde va a estar el server
+server:
+  #puerto del MS
+  port: ${SERVER_PORT: 8081}
+spring:
+  application:
+    #nombre en eureka
+  name: ms-productos
+
+  datasource:
+    url: jdbc:h2:mem:productosbd
+    driver-class-name: org.h2.Driver
+    #user
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  h2:
+    console:
+      enable: true
+
+eureka:
+  client:
+    service-url:
+      ##Si existe l vde EUREKA_URL la usa y no http://localhost:8761/eureka
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
+management:
+  endpoints:
+    web:
+      exposure:
+        #Exponer endpoints de actuator= define la salud del MS
+       include: health, info
+  endpoint:
+    health:
+      show-details: always
+
+
+
+
+
+
+
